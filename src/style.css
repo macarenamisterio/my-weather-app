@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 p {
@@ -21,7 +21,7 @@ h4 {
 footer {
   margin: 20px;
   text-align: center;
-  color: white;
+  color: #499fef;
   font-size: 15px;
   letter-spacing: 1.5px;
   text-shadow: 0.5;
