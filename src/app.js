@@ -1,17 +1,32 @@
-function currentWeather(response) {
-  let temp = Math.round(response.data.main.temp);
-  let tempNow = document.querySelector("#temp");
-  tempNow.innerHTML = `${temp}°C`;
+function showWeather() {
+
 }
 
-function logPosition(position) {
+
+function getWeather(position) {
   let apiKey = "99f763cf958e5832295c470b28782d08";
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(currentWeather);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather)
 }
 
-navigator.geolocation.getCurrentPosition(logPosition);
+function showCity(response) {
+  console.log(response)
+  let getCity = response.data[0].name;
+  let city = document.querySelector("#city");
+  city.innerHTML = `${getCity}`;
+}
+
+function getPosition(position) {
+  let apiKey = "99f763cf958e5832295c470b28782d08";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
+  axios.get(apiUrl).then(showCity);
+}
+
+navigator.geolocation.getCurrentPosition(getPosition);
+navigator.geolocation.getCurrentPosition(getWeather);
+
 
