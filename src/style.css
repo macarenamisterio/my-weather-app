@@ -1,9 +1,16 @@
+html {
+  min-height: 100%;
+}
+
 body {
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 p {
   font-size: 15px;
+  color: #499fef;
+  letter-spacing: 1.3px;
+  text-shadow: 0.5;
 }
 
 h1 {
@@ -18,15 +25,6 @@ h4 {
   color: #499fef;
 }
 
-footer {
-  margin: 20px;
-  text-align: center;
-  color: #499fef;
-  font-size: 15px;
-  letter-spacing: 1.5px;
-  text-shadow: 0.5;
-}
-
 .container-wrapper {
   background: white;
   margin: 30px;
@@ -36,11 +34,6 @@ footer {
 
 .row {
   margin: 15px;
-}
-
-.col-day {
-  text-align: center;
-  margin: 0 auto;
 }
 
 .search {
