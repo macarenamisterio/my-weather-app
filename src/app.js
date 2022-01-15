@@ -4,7 +4,7 @@ function showWeather(response) {
     document.querySelector("#w-condition").innerHTML = response.data.weather[0].main;
     document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#w-wind").innerHTML = Math.round(response.data.wind.speed);
-    document.querySelector("#current-time").innerHTML = response.data.sys.timezone;
+    document.querySelector("#current-time").innerHTML = new Date (response.data.dt * 1000);
 }
 
 function getWeather(position) {
