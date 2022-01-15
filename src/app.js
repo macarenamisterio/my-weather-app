@@ -1,13 +1,18 @@
-function showWeather() {
-
+function showWeather(response) {
+    console.log(response)
+    document.querySelector("#temp").innerHTML = Math.round(response.data.main.temp);
+    document.querySelector("#w-condition").innerHTML = response.data.weather[0].main;
+    document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
+    document.querySelector("#w-wind").innerHTML = Math.round(response.data.wind.speed);
+    document.querySelector("#current-time").innerHTML = response.data.sys.timezone;
 }
-
 
 function getWeather(position) {
   let apiKey = "99f763cf958e5832295c470b28782d08";
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  let units = "metric"
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showWeather)
 }
 
