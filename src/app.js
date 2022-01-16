@@ -1,12 +1,10 @@
 function showPosition(response) {
-  console.log(response)
   let getCity = response.data[0].name;
   let city = document.querySelector("#city");
   city.innerHTML = `${getCity}`;
 }
 
 function showWeather(response) {
-    console.log(response)
     document.querySelector("#temp").innerHTML = Math.round(response.data.main.temp);
     document.querySelector("#w-condition").innerHTML = response.data.weather[0].main;
     document.querySelector("#w-icon").setAttribute = ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -18,6 +16,14 @@ function showWeather(response) {
 
 function showSearch(response) {
   console.log(response);
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temp").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#w-condition").innerHTML = response.data.weather[0].main;
+  document.querySelector("#w-icon").setAttribute = ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#w-wind").innerHTML = Math.round(response.data.wind.speed);
+  document.querySelector("#current-day").innerHTML = new Date(response.data.dt * 1000).toLocaleDateString();
+  document.querySelector("#current-time").innerHTML = new Date(response.data.dt * 1000).toLocaleTimeString();
 }
 
 function getWeather(position) {
@@ -45,7 +51,7 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("search-input").value;
+  let city = document.querySelector("#search-input").value;
   searchCity(city);
 }
 
