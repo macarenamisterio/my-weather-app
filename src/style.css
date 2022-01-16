@@ -16,10 +16,12 @@ p {
 }
 
 h1 {
+  padding-top: 15px;
   color: #499fef;
 }
 
 h2 {
+  padding: 10px;
   color: #499fef;
 }
 
@@ -35,8 +37,9 @@ h4 {
 .container-wrapper {
   background: white;
   margin: 30px;
+  padding: 10px;
   border: 1px solid rgb(201, 201, 201);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .row {
@@ -44,11 +47,7 @@ h4 {
 }
 
 .search {
-  margin: 10px;
-}
-
-#current-temp {
-  font-size: 25px;
+  margin: 5px;
 }
 
 #w-icon {
