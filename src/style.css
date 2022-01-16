@@ -1,37 +1,56 @@
 html {
   min-height: 100%;
   padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 body {
-  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  background: #2980b9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 p {
-  font-size: 15px;
+  font-size: 17px;
   text-align: center;
-  color: #499fef;
+  color: #2980b9;
   letter-spacing: 1.3px;
   text-shadow: 0.5;
 }
 
 h1 {
   padding-top: 15px;
-  color: #499fef;
+  color: #2980b9;
 }
 
 h2 {
   padding: 10px;
-  color: #499fef;
+  color: #2980b9;
 }
 
 h3 {
-  color: #499fef;
+  color: #2980b9;
 }
 
 h4 {
   margin: 10px;
-  color: #499fef;
+  color: #2980b9;
+}
+
+small {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2980b9;
 }
 
 .container-wrapper {
@@ -52,4 +71,8 @@ h4 {
 
 #w-icon {
   margin: 0px;
+}
+
+#footer {
+  size: 12px;
 }
