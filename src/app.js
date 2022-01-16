@@ -4,7 +4,8 @@ function showWeather(response) {
     document.querySelector("#w-condition").innerHTML = response.data.weather[0].main;
     document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#w-wind").innerHTML = Math.round(response.data.wind.speed);
-    document.querySelector("#current-time").innerHTML = new Date (response.data.dt * 1000);
+    document.querySelector("#current-day").innerHTML = new Date(response.data.dt * 1000).toLocaleDateString();
+    document.querySelector("#current-time").innerHTML = new Date(response.data.dt * 1000).toLocaleTimeString();
 }
 
 function getWeather(position) {
@@ -16,7 +17,7 @@ function getWeather(position) {
   axios.get(apiUrl).then(showWeather)
 }
 
-function showCity(response) {
+function showPosition(response) {
   console.log(response)
   let getCity = response.data[0].name;
   let city = document.querySelector("#city");
@@ -28,7 +29,7 @@ function getPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
-  axios.get(apiUrl).then(showCity);
+  axios.get(apiUrl).then(showPosition);
 }
 
 navigator.geolocation.getCurrentPosition(getPosition);
