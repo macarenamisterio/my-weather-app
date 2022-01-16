@@ -19,13 +19,16 @@ h1 {
   color: #499fef;
 }
 
-h2,
+h2 {
+  color: #499fef;
+}
+
 h3 {
-  margin-bottom: 20px;
   color: #499fef;
 }
 
 h4 {
+  margin: 10px;
   color: #499fef;
 }
 
@@ -46,4 +49,8 @@ h4 {
 
 #current-temp {
   font-size: 25px;
+}
+
+#w-icon {
+  margin: 0px;
 }
