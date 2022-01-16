@@ -53,6 +53,10 @@ small {
   color: #2980b9;
 }
 
+a {
+  font-size: 14px;
+}
+
 .container-wrapper {
   background: white;
   margin: 30px;
@@ -67,6 +71,17 @@ small {
 
 .search {
   margin: 5px;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2980b9;
+  border-color: #2980b9;
+  border-radius: 10px;
 }
 
 #w-icon {
