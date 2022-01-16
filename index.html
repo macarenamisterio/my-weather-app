@@ -14,19 +14,24 @@
     <div class="container-sm">
         <div class="container-wrapper">
             <div class="row">
-                <h1 class="text-center" id="city"></h1>
+                <h1 class="text-center" id="city">
+                    Loading...
+                </h1>
             </div>
-            <div class="row">
+            <div class="row d-flex align-items-center">
                <div class="col text-center">
                    <h4 id="current-day"></h4>
                    <h4 id="current-time"></h4>
                </div>
+               <div class="col text-center">
+                    <img src="" alt="" id="w-icon" />
+               </div>  
                <div class="col text-center">           
-                <h4>
-                  <span id="temp"> </span>°C<img src="" alt="" id="w-icon" />
-                </h4>
-                 <h4 id="w-condition"> </4>                               
-               </div>   
+                    <h4>
+                        <span id="temp"> </span>°C 
+                    </h4>
+                    <h4 id="w-condition"> </4>                               
+               </div> 
             </div>
             <div class="row">    
                 <div class="col text-center">
@@ -69,7 +74,7 @@
         </div>
         <div class="container-wrapper">
             <div class="row">
-                <div>
+                
                     <h2 class="text-center">Search another city</h2>
                     <form id="form">
                         <input type="search"
@@ -85,7 +90,7 @@
                         id="search-button"
                         >
                     </form>
-                </div>
+                
             </div>
         </div>
         <p class="text-center">
