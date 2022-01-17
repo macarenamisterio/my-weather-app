@@ -108,15 +108,31 @@ function displayCel(event) {
 // Building the Forecast
 
 function showForecast() {
-	let forecastHtml = document.querySelector("#forecast-col");
-	forecastHtml.innerHTML = `<div class="col">
-                    <h4 class="forecast-day">Day 1</h4>
-                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
-                    <p>
-                        <span class="min">16</span><span class="min degree">°C</span>&nbsp;&nbsp;   
-                        <span class="max">27</span><span class="max degree">°C</span>
-                    </p>              
-                </div> `;
+	let forecastRow = document.querySelector("#forecast");
+	let forecastHtml = `<div class="row">`;
+	let days = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
+	days.forEach(function (day) {
+		forecastHtml =
+			forecastHtml +
+			`<div class="col">
+			<h4 class="forecast-day">${day}</h4>
+			<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+			<p>
+			<span class="min">16</span><span class="min degree">°C</span>&nbsp;&nbsp;   
+			<span class="max">27</span><span class="max degree">°C</span>
+			</p>              	
+			</div>`;
+	});
+	forecastHtml = forecastHtml + `</div>`;
+	forecastRow.innerHTML = forecastHtml;
 }
 
 // End of forecast
