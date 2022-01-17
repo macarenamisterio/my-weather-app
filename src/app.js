@@ -11,22 +11,24 @@ function showWeather(response) {
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
 	document.querySelector("#w-condition").innerHTML =
 		response.data.weather[0].main;
-	document
+	document.querySelector("#current-day").innerHTML = new Date(
+			response.data.dt * 1000
+		).toLocaleDateString();
+	document.querySelector("#current-time").innerHTML = new Date(
+			response.data.dt * 1000
+		).toLocaleTimeString();
+// ERROR
+	document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
+	document.querySelector("#w-wind").innerHTML = Math.round(
+			response.data.wind.speed
+		);
+// ERROR - cannot read property of null???
+		document
 		.querySelector("#w-icon")
 		.setAttribute(
 			"src",
 			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
-	document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
-	document.querySelector("#w-wind").innerHTML = Math.round(
-		response.data.wind.speed
-	);
-	document.querySelector("#current-day").innerHTML = new Date(
-		response.data.dt * 1000
-	).toLocaleDateString();
-	document.querySelector("#current-time").innerHTML = new Date(
-		response.data.dt * 1000
-	).toLocaleTimeString();
 }
 
 // Show search result: city name, city weather
