@@ -95,6 +95,17 @@ function displayCel(event) {
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
 }
 
+// Building the Forecast
+
+for (let i = 0; i < 5; i++) {
+	forecastHtml;
+}
+
+forecastHtml = "";
+document.querySelector("#forecast-day").innerHTML = forecastHtml;
+
+// End of forecast
+
 let currentTemp = null;
 
 let fah = document.querySelector("#fahrenheit");
