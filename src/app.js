@@ -1,9 +1,11 @@
+// Show current location using latitude and longitude
 function showPosition(response) {
 	let getCity = response.data[0].name;
 	let city = document.querySelector("#city");
 	city.innerHTML = `${getCity}`;
 }
 
+// Show current weather
 function showWeather(response) {
 	currentTemp = response.data.main.temp;
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
@@ -27,6 +29,7 @@ function showWeather(response) {
 	).toLocaleTimeString();
 }
 
+// Show search result: city name, city weather
 function showSearch(response) {
 	currentTemp = response.data.main.temp;
 	document.querySelector("#city").innerHTML = response.data.name;
@@ -51,6 +54,7 @@ function showSearch(response) {
 	).toLocaleTimeString();
 }
 
+// Get current location weather
 function getWeather(position) {
 	let apiKey = "99f763cf958e5832295c470b28782d08";
 	let latitude = position.coords.latitude;
@@ -60,6 +64,7 @@ function getWeather(position) {
 	axios.get(apiUrl).then(showWeather);
 }
 
+// Get city name using latitude and longitude
 function getPosition(position) {
 	let apiKey = "99f763cf958e5832295c470b28782d08";
 	let latitude = position.coords.latitude;
@@ -68,18 +73,21 @@ function getPosition(position) {
 	axios.get(apiUrl).then(showPosition);
 }
 
+// Search for a city
 function searchCity(city) {
 	let apiKey = "99f763cf958e5832295c470b28782d08";
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 	axios.get(apiUrl).then(showSearch);
 }
 
+// Search engine
 function handleSubmit(event) {
 	event.preventDefault();
 	let city = document.querySelector("#search-input").value;
 	searchCity(city);
 }
 
+// Convert to fahrenheit
 function displayFah(event) {
 	event.preventDefault();
 	fah.classList.remove("active");
@@ -88,6 +96,7 @@ function displayFah(event) {
 	document.querySelector("#temp").innerHTML = fahFormula;
 }
 
+// Convert to celsius
 function displayCel(event) {
 	event.preventDefault();
 	fah.classList.add("active");
@@ -106,16 +115,21 @@ document.querySelector("#forecast-day").innerHTML = forecastHtml;
 
 // End of forecast
 
+// Variable to use in showWeather and showSearch
 let currentTemp = null;
 
+// Click to convert to fahrenheit
 let fah = document.querySelector("#fahrenheit");
 fah.addEventListener("click", displayFah);
 
+// Click to convert to celsius
 let cel = document.querySelector("#celsius");
 cel.addEventListener("click", displayCel);
 
+// Search a new city when button is clicked
 let form = document.querySelector("#form");
 form.addEventListener("submit", handleSubmit);
 
+// Get current position longitude and latitude to show current position
 navigator.geolocation.getCurrentPosition(getPosition);
 navigator.geolocation.getCurrentPosition(getWeather);
