@@ -12,17 +12,17 @@ function showWeather(response) {
 	document.querySelector("#w-condition").innerHTML =
 		response.data.weather[0].main;
 	document.querySelector("#current-day").innerHTML = new Date(
-			response.data.dt * 1000
-		).toLocaleDateString();
+		response.data.dt * 1000
+	).toLocaleDateString();
 	document.querySelector("#current-time").innerHTML = new Date(
-			response.data.dt * 1000
-		).toLocaleTimeString();
+		response.data.dt * 1000
+	).toLocaleTimeString();
 
 	document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
 	document.querySelector("#w-wind").innerHTML = Math.round(
-			response.data.wind.speed
-		);
-		document
+		response.data.wind.speed
+	);
+	document
 		.querySelector("#w-icon")
 		.setAttribute(
 			"src",
@@ -107,16 +107,16 @@ function displayCel(event) {
 
 // Building the Forecast
 
-function showForecast(){
-	let forecastHtml = `<div class="col" id="forecast-col">
-                    <h4 class="forecast-day">Today</h4>
+function showForecast() {
+	let forecastHtml = document.querySelector("#forecast-col");
+	forecastHtml.innerHTML = `<div class="col">
+                    <h4 class="forecast-day">Day 1</h4>
                     <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
                     <p>
                         <span class="min">16</span><span class="min degree">°C</span>&nbsp;&nbsp;   
                         <span class="max">27</span><span class="max degree">°C</span>
                     </p>              
-                </div>`;
-	document.querySelector("#forecast-col") = forecastHtml
+                </div> `;
 }
 
 // End of forecast
@@ -141,3 +141,6 @@ navigator.geolocation.getCurrentPosition(getPosition);
 
 // Get current position longitude and latitude to show current weather
 navigator.geolocation.getCurrentPosition(getWeather);
+
+// Testing loop
+showForecast();
