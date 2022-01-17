@@ -17,12 +17,11 @@ function showWeather(response) {
 	document.querySelector("#current-time").innerHTML = new Date(
 			response.data.dt * 1000
 		).toLocaleTimeString();
-// ERROR
+
 	document.querySelector("#w-humidity").innerHTML = response.data.main.humidity;
 	document.querySelector("#w-wind").innerHTML = Math.round(
 			response.data.wind.speed
 		);
-// ERROR - cannot read property of null???
 		document
 		.querySelector("#w-icon")
 		.setAttribute(
