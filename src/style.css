@@ -29,6 +29,20 @@ p {
 	margin-top: 10px;
 }
 
+p .min {
+	color: #6dd5fa;
+}
+
+p .max {
+	color: #2980b9;
+}
+
+p .degree {
+	font-size: 10px;
+	position: relative;
+	top: -4px;
+}
+
 h1 {
 	padding-top: 15px;
 	color: #2980b9;
