@@ -26,6 +26,7 @@ p {
 	color: #2980b9;
 	letter-spacing: 1.3px;
 	text-shadow: 0.5;
+	margin-top: 10px;
 }
 
 h1 {
@@ -95,7 +96,7 @@ a {
 	font-size: 20px;
 }
 
-#w-icon {
+.w-icon {
 	margin: 0px;
 }
 
