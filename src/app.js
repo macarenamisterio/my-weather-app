@@ -106,12 +106,17 @@ function displayCel(event) {
 
 // Building the Forecast
 
-for (let i = 0; i < 5; i++) {
-	forecastHtml;
+function showForecast(){
+	let forecastHtml = `<div class="col" id="forecast-col">
+                    <h4 class="forecast-day">Today</h4>
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+                    <p>
+                        <span class="min">16</span><span class="min degree">°C</span>&nbsp;&nbsp;   
+                        <span class="max">27</span><span class="max degree">°C</span>
+                    </p>              
+                </div>`;
+	document.querySelector("#forecast-col") = forecastHtml
 }
-
-forecastHtml = "";
-document.querySelector("#forecast-day").innerHTML = forecastHtml;
 
 // End of forecast
 
@@ -132,4 +137,6 @@ form.addEventListener("submit", handleSubmit);
 
 // Get current position longitude and latitude to show current position
 navigator.geolocation.getCurrentPosition(getPosition);
+
+// Get current position longitude and latitude to show current weather
 navigator.geolocation.getCurrentPosition(getWeather);
