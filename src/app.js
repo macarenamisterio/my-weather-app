@@ -14,7 +14,7 @@ function getPosition(position) {
 	axios.get(apiUrl).then(showPosition);
 }
 
-// Show current location weather using geolocation
+// Show current location date, time, current weather and forecast using geolocation
 function showWeather(response) {
 	currentTemp = response.data.main.temp;
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
@@ -22,7 +22,7 @@ function showWeather(response) {
 		response.data.weather[0].main;
 	document.querySelector("#current-day").innerHTML = new Date(
 		response.data.dt * 1000
-	).toLocaleDateString();
+	).toDateString();
 	document.querySelector("#current-time").innerHTML = new Date(
 		response.data.dt * 1000
 	).toLocaleTimeString();
@@ -50,8 +50,9 @@ function getWeather(position) {
 	axios.get(apiUrl).then(showWeather);
 }
 
-// Show search result: city name and city weather
+// Show search result: city name, current weather and forecast
 function showSearch(response) {
+	console.log(response);
 	currentTemp = response.data.main.temp;
 	document.querySelector("#city").innerHTML = response.data.name;
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
@@ -69,7 +70,7 @@ function showSearch(response) {
 	);
 	document.querySelector("#current-day").innerHTML = new Date(
 		response.data.dt * 1000
-	).toLocaleDateString();
+	).toDateString();
 	document.querySelector("#current-time").innerHTML = new Date(
 		response.data.dt * 1000
 	).toLocaleTimeString();
