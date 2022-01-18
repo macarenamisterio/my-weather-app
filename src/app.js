@@ -1,11 +1,20 @@
-// Show current location using latitude and longitude
+// Show current city using geolocation
 function showPosition(response) {
 	let getCity = response.data[0].name;
 	let city = document.querySelector("#city");
 	city.innerHTML = `${getCity}`;
 }
 
-// Show current weather
+// Get current city name using geolocation
+function getPosition(position) {
+	let apiKey = "99f763cf958e5832295c470b28782d08";
+	let latitude = position.coords.latitude;
+	let longitude = position.coords.longitude;
+	let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
+	axios.get(apiUrl).then(showPosition);
+}
+
+// Show current location weather using geolocation
 function showWeather(response) {
 	currentTemp = response.data.main.temp;
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
@@ -30,7 +39,17 @@ function showWeather(response) {
 		);
 }
 
-// Show search result: city name, city weather
+// Get current location weather using geolocation
+function getWeather(position) {
+	let apiKey = "99f763cf958e5832295c470b28782d08";
+	let latitude = position.coords.latitude;
+	let longitude = position.coords.longitude;
+	let units = "metric";
+	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+	axios.get(apiUrl).then(showWeather);
+}
+
+// Show search result: city name and city weather
 function showSearch(response) {
 	currentTemp = response.data.main.temp;
 	document.querySelector("#city").innerHTML = response.data.name;
@@ -53,25 +72,6 @@ function showSearch(response) {
 	document.querySelector("#current-time").innerHTML = new Date(
 		response.data.dt * 1000
 	).toLocaleTimeString();
-}
-
-// Get current location weather
-function getWeather(position) {
-	let apiKey = "99f763cf958e5832295c470b28782d08";
-	let latitude = position.coords.latitude;
-	let longitude = position.coords.longitude;
-	let units = "metric";
-	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-	axios.get(apiUrl).then(showWeather);
-}
-
-// Get city name using latitude and longitude
-function getPosition(position) {
-	let apiKey = "99f763cf958e5832295c470b28782d08";
-	let latitude = position.coords.latitude;
-	let longitude = position.coords.longitude;
-	let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
-	axios.get(apiUrl).then(showPosition);
 }
 
 // Search for a city
@@ -106,7 +106,6 @@ function displayCel(event) {
 }
 
 // Building the Forecast
-
 function showForecast() {
 	let forecastRow = document.querySelector("#forecast");
 	let forecastHtml = `<div class="row">`;
@@ -137,6 +136,10 @@ function showForecast() {
 
 // End of forecast
 
+// Search a new city when button is clicked
+let form = document.querySelector("#form");
+form.addEventListener("submit", handleSubmit);
+
 // Variable to use in showWeather and showSearch
 let currentTemp = null;
 
@@ -148,15 +151,11 @@ fah.addEventListener("click", displayFah);
 let cel = document.querySelector("#celsius");
 cel.addEventListener("click", displayCel);
 
-// Search a new city when button is clicked
-let form = document.querySelector("#form");
-form.addEventListener("submit", handleSubmit);
-
-// Get current position longitude and latitude to show current position
+// Get current position coords
 navigator.geolocation.getCurrentPosition(getPosition);
 
-// Get current position longitude and latitude to show current weather
+// Get current position coords
 navigator.geolocation.getCurrentPosition(getWeather);
 
-// Testing loop
+// Testing forecast loop
 showForecast();
