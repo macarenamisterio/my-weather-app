@@ -114,17 +114,25 @@ function showForecast(response) {
 	let forecastRow = document.querySelector("#forecast");
 	let forecastHtml = `<div class="row">`;
 
-	forecast.forEach(function (day) {
-		forecastHtml =
-			forecastHtml +
-			`<div class="col">
-			<h4 class="forecast-day">${day.dt}</h4>
-			<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="">
-			<p>
-			<span class="min">${day.temp.min}</span><span class="min degree">°C</span>&nbsp;&nbsp;   
-			<span class="max">${day.temp.max}</span><span class="max degree">°C</span>
-			</p>              	
-			</div>`;
+	forecast.forEach(function (day, index) {
+		if (index < 5) {
+			forecastHtml =
+				forecastHtml +
+				`<div class="col">
+				<h4 class="forecast-day">${day.dt}</h4>
+				<img src="http://openweathermap.org/img/wn/${
+					day.weather[0].icon
+				}@2x.png" alt="">
+				<p>
+				<span class="min">${Math.round(
+					day.temp.min
+				)}</span><span class="min degree">°C</span>&nbsp;&nbsp;   
+				<span class="max">${Math.round(
+					day.temp.max
+				)}</span><span class="max degree">°C</span>
+				</p>              	
+				</div>`;
+		}
 	});
 	forecastHtml = forecastHtml + `</div>`;
 	forecastRow.innerHTML = forecastHtml;
