@@ -37,6 +37,7 @@ function showWeather(response) {
 			"src",
 			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
+	getForecast(response.data.coord);
 }
 
 // Get current location weather using geolocation
@@ -72,6 +73,7 @@ function showSearch(response) {
 	document.querySelector("#current-time").innerHTML = new Date(
 		response.data.dt * 1000
 	).toLocaleTimeString();
+	getForecast(response.data.coord);
 }
 
 // Search for a city
@@ -134,7 +136,13 @@ function showForecast() {
 	forecastRow.innerHTML = forecastHtml;
 }
 
-// End of forecast
+// Getting the forecast
+
+function getForecast(coord) {
+	let apiKey = "99f763cf958e5832295c470b28782d08";
+	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+	axios.get(apiUrl).then(showForecast);
+}
 
 // Search a new city when button is clicked
 let form = document.querySelector("#form");
