@@ -107,28 +107,22 @@ function displayCel(event) {
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
 }
 
-// Building the Forecast
-function showForecast() {
+// Building the forecast loop
+function showForecast(response) {
+	console.log(response);
+	let forecast = response.data.daily;
 	let forecastRow = document.querySelector("#forecast");
 	let forecastHtml = `<div class="row">`;
-	let days = [
-		"Sunday",
-		"Monday",
-		"Tuesday",
-		"Wednesday",
-		"Thursday",
-		"Friday",
-		"Saturday",
-	];
-	days.forEach(function (day) {
+
+	forecast.forEach(function (day) {
 		forecastHtml =
 			forecastHtml +
 			`<div class="col">
-			<h4 class="forecast-day">${day}</h4>
-			<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+			<h4 class="forecast-day">${day.dt}</h4>
+			<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="">
 			<p>
-			<span class="min">16</span><span class="min degree">°C</span>&nbsp;&nbsp;   
-			<span class="max">27</span><span class="max degree">°C</span>
+			<span class="min">${day.temp.min}</span><span class="min degree">°C</span>&nbsp;&nbsp;   
+			<span class="max">${day.temp.max}</span><span class="max degree">°C</span>
 			</p>              	
 			</div>`;
 	});
@@ -136,8 +130,7 @@ function showForecast() {
 	forecastRow.innerHTML = forecastHtml;
 }
 
-// Getting the forecast
-
+// Get daily forecast
 function getForecast(coord) {
 	let apiKey = "99f763cf958e5832295c470b28782d08";
 	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
@@ -164,6 +157,3 @@ navigator.geolocation.getCurrentPosition(getPosition);
 
 // Get current position coords
 navigator.geolocation.getCurrentPosition(getWeather);
-
-// Testing forecast loop
-showForecast();
