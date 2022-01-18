@@ -107,6 +107,14 @@ function displayCel(event) {
 	document.querySelector("#temp").innerHTML = Math.round(currentTemp);
 }
 
+// Forecast timestamp to week day
+function formatDay(dt) {
+	let date = new Date(dt * 1000);
+	let day = date.getDay();
+	let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+	return days[day];
+}
+
 // Building the forecast loop
 function showForecast(response) {
 	console.log(response);
@@ -119,7 +127,7 @@ function showForecast(response) {
 			forecastHtml =
 				forecastHtml +
 				`<div class="col">
-				<h4 class="forecast-day">${day.dt}</h4>
+				<h4 class="forecast-day">${formatDay(day.dt)}</h4>
 				<img src="http://openweathermap.org/img/wn/${
 					day.weather[0].icon
 				}@2x.png" alt="">
